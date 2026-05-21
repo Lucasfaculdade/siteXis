@@ -2,8 +2,8 @@
 
 export default function CategorySidebar({ categorias, ativa, setAtiva }){
     return(
-        <aside style={styles.sidebar}>
-            <h3 style={{ marginBottom: '15px' }}>Categorias</h3>
+        <aside className="menu-sidebar" style={styles.sidebar}>
+            <h3 style={{ marginBottom: '15px' }}>Cardápio</h3>
             {categorias.map(cat => (
                 <button key={cat} onClick={() => setAtiva(cat)}
                     style={{ ...styles.tab, 

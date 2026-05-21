@@ -2,23 +2,22 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logoX from '../assets/logoX.png';
 
-export default function Menu() {
+export default function Menu({ onVerCardapio }) {
     const navigate = useNavigate();
+
+    const telefone = "5561981857189";
+    const mensagemPadrao = encodeURIComponent("Olá, vim pelo site e gostaria de fazer um pedido!");
+    const linkWhatsApp = `https://wa.me/${telefone}?text=${mensagemPadrao}`;
 
     return (
         <div style={styles.homeWrapper}>
-                <div style={styles.homeContainer}>
-                    
+                <div className="home-container" style={styles.homeContainer}>
                     <div style={styles.logoContainer}>
-                        <img 
-                            src={logoX} 
-                            alt="Xis Gáucho - Logo" 
-                            style={styles.logo}                        
-                        />
+                        <img src={logoX} alt="Xis Gáucho - Logo" style={styles.logo}  />
                     </div>
                     
 
-                    <div style={styles.textSide}>
+                    <div className="home-text-side" style={styles.textSide}>
                         <div style={styles.badge}>Tradicionalismo & Sabor</div>
                             <p style={styles.logoDesc}> 
                                 Bah! O verdadeiro sabor do Rio Grande do Sul, com muito amor de tradição.
@@ -26,13 +25,13 @@ export default function Menu() {
                             </p>
                 
                         <div style={styles.btnArea}>
-                            <button onClick={() => navigate('/menu')} style={styles.btnPrincipal}>
-                                Veja nosso Cardápio Completo
+                            <button onClick={onVerCardapio} style={styles.btnPrincipal}>
+                                Ver cardápio na íntegra 
                             </button>
 
-                            <button onClick={() => navigate('/contato')} style={styles.btnSecundario}>
+                            <a href={linkWhatsApp} target="_blank" rel="noreferrer" style={styles.btnSecundario}>
                                 Peça pelo WhatsApp
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -46,28 +45,29 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: '50px'
+        minHeight: '100vh',
+        padding: '20px'
     },
     homeContainer: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        maxWidth: '1600px',
+        maxWidth: '1200px',
         width: '100%',
-        gap: '40px',
+        gap: '20px',
         flexWrap: 'wrap',
     },
     logoContainer: {
-        flex: 1.5,
+        flex: 1,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '20px',
+        minWidth: '280px'
     },
     logo: { 
-        width: '650px',
-        maxWidth: '750px',
+        width: '80%',
+        maxWidth: '450px',
         height: 'auto',
         filter: 'drop-shadow(0px, 10px, 20px rgba(0, 0, 0, 0.4))',
         transition: '0.3s ease-in-out',
@@ -75,7 +75,8 @@ const styles = {
     textSide: {
         flex: 1,
         textAlign: 'left',
-        minWidth: '350px',
+        width: '500px',
+        minWidth: '280px',
         padding: '30px',   
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         borderRadius: '30px',
@@ -100,29 +101,35 @@ const styles = {
     },
     btnArea: {
         display: 'flex',
-        gap: '15px',
+        gap: '10px',
         justifyContent: 'center',
+        flexWrap: 'wrap'
     },
     btnPrincipal: {
-        padding: '18px 30px',
+        padding: '12px 20px',
         borderRadius: '50px',
         border: 'none',
         backgroundColor: '#fff',
         color: '#d12124',
         fontWeight: 'bold',
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         cursor: 'pointer',
         transition: '0.3s',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
     },
     btnSecundario: {
-        padding: '18px 30px', 
+        padding: '12px 20px', 
         borderRadius: '50px',
         border: 'none',
-        backgroundColor: '#3cff0098',
+        backgroundColor: '#25D366',
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         cursor: 'pointer',
+        textDecoration: 'none',
+        display: 'flex',
+        alignItems: 'center',
         transition: '0.3s',
+        boxShadow: '0 4px 15px rgba(37, 211, 102, 0.3)'
     },
 };
